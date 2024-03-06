@@ -2,15 +2,15 @@ import styled from "styled-components";
 
 const SliderContainer = styled.div`
     position: relative;
-    transition: transform 0.5s ease 0s;
     border-bottom: 3px solid #809caa;
+    overflow: hidden;
     flex-grow: 1;
     height: 1%;
 `
 const Slider = styled.div`
     position: relative;
     display: flex;
-    overflow: hidden;
+    transition: transform 0.5s ease 0s;
     width: 100%;
     height: 100%;
 `
