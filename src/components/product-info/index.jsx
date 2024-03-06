@@ -11,10 +11,10 @@ export const ProductInfo = () => {
                 {/* Map com renderização de imagens  */}
 
                 <ImageContainer>
-                    <img src="" alt="Teste" />
+                    <img src={images.image} alt="Teste" />
                 </ImageContainer>
                 <ImageContainer>
-                    <img src="" alt="Teste" />
+                    <img src={images.image} alt="Teste" />
                 </ImageContainer>
             </ImageSlider>
 
