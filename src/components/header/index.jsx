@@ -10,7 +10,7 @@ export const Header = () => {
                 <ReturnButton type="button"> &lt; </ReturnButton>
 
                 <div>
-                    <ProductSection>{`(id) Casaco`}</ProductSection>
+                    <ProductSection>{`(4) Casaco`}</ProductSection>
                 </div>
 
                 <ForwardButton type="button"> &gt; </ForwardButton>

@@ -34,9 +34,8 @@ const ReturnButton = styled.button `
 `
 const ProductSection = styled.p `
     color: #809caa;
-    font-family: 'Poppins';
+    font-family: 'PoppinsSemiBold';
     font-size: 14px;
-    font-weight: 600;
     text-align: center;
     text-transform: uppercase; 
     padding: 3px;
