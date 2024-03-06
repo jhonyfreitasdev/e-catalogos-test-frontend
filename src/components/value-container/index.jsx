@@ -1,5 +1,5 @@
-import { images } from "../../objects/images"
-import { Container, Price, Count, Desc } from "./style"
+import { images } from "../../objects/images";
+import { Container, Price, Count, Desc } from "./style";
 
 export const ValueContainer = () => {
     return (
