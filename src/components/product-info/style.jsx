@@ -1,0 +1,28 @@
+import styled from "styled-components";
+
+const ProductInfoContainer = styled.section `
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding: 4px;
+
+    img {
+        width: 34px;
+        height: 34px;
+    }
+`
+const ImageSlider = styled.div `
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+`
+const ImageContainer = styled.div `
+    border: 1px solid #5da0ad;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    object-fit: contain;
+`
+export { ProductInfoContainer, ImageSlider, ImageContainer }
