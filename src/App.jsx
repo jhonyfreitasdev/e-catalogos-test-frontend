@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components"
 import { AppRoutes } from "./routes/route"
+import PoppinsBold from "./assets/fonts/Poppins-SemiBold.ttf"
 
 export const App = () => {
 	return (
@@ -11,6 +12,14 @@ export const App = () => {
 }
 
 const GlobalStyle = createGlobalStyle`
+
+	@font-face {
+		font-family: 'Poppins';
+		src: url(${PoppinsBold}) format('truetype');
+		font-weight: 600;
+		font-style: normal;
+	}
+	
 	*{
 		font-family: Roboto, Helvetica, 'sans-serif';
 		margin: 0;
