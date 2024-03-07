@@ -1,14 +1,17 @@
 import { AppRoutes } from "./routes/route";
+import { ShoppingCartProvider } from "./context/shopping-cart";
 import { DataProvider } from "./context/data-context";
 import { createGlobalStyle } from "styled-components";
 import poppinsSemiBold from "./assets/fonts/Poppins-SemiBold.ttf";
 
 export const App = () => {
 	return (
-		<DataProvider>
-			<GlobalStyle />
-			<AppRoutes />
-		</DataProvider>
+		<ShoppingCartProvider>
+			<DataProvider>
+				<GlobalStyle />
+				<AppRoutes />
+			</DataProvider>
+		</ShoppingCartProvider>
 	)
 }
 
