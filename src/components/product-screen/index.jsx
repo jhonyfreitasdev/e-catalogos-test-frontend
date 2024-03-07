@@ -18,7 +18,7 @@ export const ProductScreen = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('./src/data/mock-data.json');
+            const response = await fetch('/mock-data.json');
             const productData = await response.json();
 
             setData(productData);
