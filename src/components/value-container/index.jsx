@@ -1,14 +1,12 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { ShoppingCartContext } from "../../context/shopping-cart";
 import { DataContext } from "../../context/data-context";
 import { images } from "../../objects/images";
 import { Container, Price, Count, Desc } from "./style";
 
 export const ValueContainer = () => {
-    const { shoppingCart, setShoppingCart } = useContext(ShoppingCartContext);
+    const { shoppingCart } = useContext(ShoppingCartContext);
     const { data, setData, currentIndex } = useContext(DataContext);
-
-    useEffect(() => {updateShoppingCart();}, [data])
 
     let totalPack = 0;
     Object.values(data[currentIndex].sizes).forEach(item => { totalPack += item });
@@ -49,23 +47,6 @@ export const ValueContainer = () => {
             };
         };
     };
-    const updateShoppingCart = () => {
-        const currentPriceList = data.map(item => {
-            let totalPack = 0;
-            Object.values(item.sizes).forEach(item => { totalPack += item });
-            const packPrice = totalPack * item.price;
-            let currentPrice = 0
-            if (item.quantity > 0) {
-                currentPrice = packPrice * item.quantity
-                return currentPrice
-            }
-            return currentPrice
-        })
-        let total = 0;
-        currentPriceList.forEach(item => total += item);
-
-        setShoppingCart({ totalPrice: total })
-    }
 
     return (
         <Container>
