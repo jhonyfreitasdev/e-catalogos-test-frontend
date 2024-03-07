@@ -18,23 +18,9 @@ const ProductSectionContainer = styled.div `
     align-items: center;
     gap: 10px;
 `
-const ReturnButton = styled.button `
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #809caa;
-    font-family: Roboto;
-    font-weight: 600;
-    font-size: 17px;
-    cursor: pointer;
-    margin-right: 4px;
-    border-radius: 9999px;
-    width: 20px;
-    height: 20px;
-`
 const ProductSection = styled.p `
     color: #809caa;
-    font-family: 'PoppinsSemiBold';
+    font-family: Poppins, sans-serif;
     font-size: 14px;
     text-align: center;
     text-transform: uppercase; 
@@ -43,20 +29,6 @@ const ProductSection = styled.p `
     background-color: #fdfffd;
     margin: auto;
 `
-const ForwardButton = styled.button `
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #809caa;
-    font-family: Roboto;
-    font-weight: 600;
-    font-size: 17px;
-    cursor: pointer;
-    margin-left: 4px;
-    border-radius: 9999px;
-    width: 20px;
-    height: 20px;
-` 
 const FunctionSpan = styled.span `
     display: flex;
     justify-content: center;
@@ -71,4 +43,4 @@ const FunctionSpan = styled.span `
     height: 24px;
 `
 
-export { HeaderContainer, ProductSectionContainer, ReturnButton, ProductSection, ForwardButton, FunctionSpan }
+export { HeaderContainer, ProductSectionContainer, ProductSection, FunctionSpan }
