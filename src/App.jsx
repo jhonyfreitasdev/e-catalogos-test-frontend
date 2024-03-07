@@ -2,7 +2,6 @@ import { AppRoutes } from "./routes/route";
 import { ShoppingCartProvider } from "./context/shopping-cart";
 import { DataProvider } from "./context/data-context";
 import { createGlobalStyle } from "styled-components";
-import poppinsSemiBold from "./assets/fonts/Poppins-SemiBold.ttf";
 
 export const App = () => {
 	return (
@@ -16,16 +15,8 @@ export const App = () => {
 }
 
 const GlobalStyle = createGlobalStyle`
-
-	@font-face {
-		font-family: 'PoppinsSemiBold';
-		src: url(${poppinsSemiBold}) format('truetype');
-		font-weight: 600;
-		font-style: normal;
-	}
-
 	*{
-		font-family: Roboto, Helvetica, 'sans-serif';
+		font-family: Roboto, sans-serif;
 		margin: 0;
 		padding: 0;
 		border: none;
