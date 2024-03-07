@@ -6,12 +6,12 @@ import poppinsSemiBold from "./assets/fonts/Poppins-SemiBold.ttf";
 
 export const App = () => {
 	return (
-		<ShoppingCartProvider>
-			<DataProvider>
+		<DataProvider>
+			<ShoppingCartProvider>
 				<GlobalStyle />
 				<AppRoutes />
-			</DataProvider>
-		</ShoppingCartProvider>
+			</ShoppingCartProvider>
+		</DataProvider>
 	)
 }
 
