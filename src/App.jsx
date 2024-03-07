@@ -1,5 +1,5 @@
 import { DataProvider } from "./context/data-context";
-import { ShoppingCartProvider } from "./context/shopping-cart";
+import { ShoppingCartProvider } from "./context/shopping-cart-context";
 import { createGlobalStyle } from "styled-components";
 import { AppRoutes } from "./routes/route";
 

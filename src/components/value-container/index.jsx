@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ShoppingCartContext } from "../../context/shopping-cart";
+import { ShoppingCartContext } from "../../context/shopping-cart-context";
 import { DataContext } from "../../context/data-context";
 import { images } from "../../objects/images";
 import { Container, Price, Count, Desc } from "./style";
