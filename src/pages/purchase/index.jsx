@@ -1,5 +1,6 @@
-import { ProductScreen } from "../../components/product-screen"
-import { PurchaseContainer } from "./style"
+import { ProductScreen } from "../../components/product-screen";
+
+import { PurchaseContainer } from "./style";
 
 export const Purchase = () => {
     return (

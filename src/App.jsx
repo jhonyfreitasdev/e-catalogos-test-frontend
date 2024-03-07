@@ -1,7 +1,7 @@
-import { AppRoutes } from "./routes/route";
-import { ShoppingCartProvider } from "./context/shopping-cart";
 import { DataProvider } from "./context/data-context";
+import { ShoppingCartProvider } from "./context/shopping-cart";
 import { createGlobalStyle } from "styled-components";
+import { AppRoutes } from "./routes/route";
 
 export const App = () => {
 	return (
@@ -11,8 +11,8 @@ export const App = () => {
 				<AppRoutes />
 			</ShoppingCartProvider>
 		</DataProvider>
-	)
-}
+	);
+};
 
 const GlobalStyle = createGlobalStyle`
 	*{
