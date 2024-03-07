@@ -1,27 +1,38 @@
 import { useContext } from "react";
+import { ProductInfoContainer, Container, TitleContainer, Title, ContentContainer, Colors, ColorContent, Info } from "./style";
 import { DataContext } from "../../context/data-context";
 import { images } from "../../objects/images";
-import { ProductInfoContainer, ImageSlider, ImageContainer } from "./style"
 
-export const ProductInfo = () => {
-    const { data, currentIndex } = useContext(DataContext)
-    
+export const ProductInfo = ({handleInfoActiveChange}) => {
+    const { data, currentIndex } = useContext(DataContext);
+    const currentProduct = data[currentIndex];
+
     return (
         <ProductInfoContainer>
-            <img src={images.info} alt="Imagem de info" />
-            <img src={images.query} alt="Imagem de lupa" />
+            <Container>
+                <TitleContainer>
+                    <Title>Informações</Title>
+                    <img src={images.closeButton} alt="Imagem de X" onClick={handleInfoActiveChange} />
+                </TitleContainer>
 
-            <ImageSlider>
-                {data[currentIndex].images.map((item, index) => {
-                    return (
-                        <ImageContainer key={index} onClick={() => console.log(index)}>
-                            <img src={item.image} alt="Teste" />
-                        </ImageContainer>
-                    )
-                })}
-            </ImageSlider>
+                <ContentContainer>
+                    <Colors>Cores</Colors>
 
-            <img src={images.cart} alt="Imagem de carrinho de compras" />
+                    <ColorContent>
+                        {currentProduct.colors.map((color, index) => {
+                            return (
+                                <div key={index} style={{ backgroundColor: `#${color.cod_hex}` }}> {color.color_name} </div>
+                            )
+                        })}
+                    </ColorContent>
+
+                    <Info>Nome do produto: <span>{currentProduct.name}</span></Info>
+                    <Info>Referencia: <span>{currentProduct.reference}</span></Info>
+                    <Info>Marca: <span>{currentProduct.brand_name}</span></Info>
+                    <Info>Categoria: <span>{currentProduct.category_name}</span></Info>
+                    <Info>Gênero: <span>{currentProduct.group_name}</span></Info>
+                </ContentContainer>
+            </Container>
         </ProductInfoContainer>
     )
 }
