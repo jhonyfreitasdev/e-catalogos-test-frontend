@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
-import { FindRefContainer, Container, TitleContainer, Title, ContentContainer } from "./style";
 import { DataContext } from "../../context/data-context";
 import { images } from "../../objects/images";
+
+import { FindRefContainer, Container, TitleContainer, Title, ContentContainer } from "./style";
 
 export const FindRef = ({ handleFindRefActiveChange }) => {
     const [inputValue, setInputValue] = useState('');
@@ -9,14 +10,15 @@ export const FindRef = ({ handleFindRefActiveChange }) => {
     const { data, setCurrentIndex } = useContext(DataContext);
 
     const findRef = () => {
-        const foundRef = data.find(item => item.reference === inputValue);
-        const index = data.indexOf(foundRef);
+        const foundRef = data.find(({ reference }) => reference === inputValue);
 
-        if (index !== -1) {
-            setCurrentIndex(index);
+        if (foundRef) {
+            setCurrentIndex(data.indexOf(foundRef));
             handleFindRefActiveChange();
             setRefNotFound(false);
-        } else {setRefNotFound(true);}
+        } else {
+            setRefNotFound(true);
+        }
     };
 
     return (
@@ -30,11 +32,12 @@ export const FindRef = ({ handleFindRefActiveChange }) => {
                 <ContentContainer>
                     <div>
                         <input type="text" value={inputValue} onChange={e => setInputValue(e.target.value)} placeholder="00.00.0000" />
-                        {refNotFound ? <p>Referencia não encontrada</p> : ""}
+                        {refNotFound && <p>Referencia não encontrada</p>}
+
                         <button type="button" onClick={findRef}>Buscar</button>
                     </div>
                 </ContentContainer>
             </Container>
         </FindRefContainer>
-    )
-}
+    );
+};
