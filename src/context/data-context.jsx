@@ -10,5 +10,5 @@ export const DataProvider = ({children}) => {
         <DataContext.Provider value={{data, setData, currentIndex, setCurrentIndex}}>
             { children }
         </DataContext.Provider>
-    )
-}
+    );
+};
