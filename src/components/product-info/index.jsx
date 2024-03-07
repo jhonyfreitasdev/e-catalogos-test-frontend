@@ -27,7 +27,7 @@ export const ProductInfo = ({handleInfoActiveChange}) => {
                     </ColorContent>
 
                     <Info>Nome do produto: <span>{currentProduct.name}</span></Info>
-                    <Info>Referencia: <span>{currentProduct.reference}</span></Info>
+                    <Info>Referência: <span>{currentProduct.reference}</span></Info>
                     <Info>Marca: <span>{currentProduct.brand_name}</span></Info>
                     <Info>Categoria: <span>{currentProduct.category_name}</span></Info>
                     <Info>Gênero: <span>{currentProduct.group_name}</span></Info>
