@@ -9,7 +9,7 @@ import { DataContext } from "../../context/data-context";
 import { ProductScreenContainer, Line } from './style';
 
 export const ProductScreen = () => {
-    const { setData } = useContext(DataContext)
+    const { data, setData } = useContext(DataContext)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,14 +23,18 @@ export const ProductScreen = () => {
     }, []);
 
     return (
-        <ProductScreenContainer>
-            <Header />
-            <ProductSlider />
-            <ProductInfo />
-            <Line></Line>
-            <ProductRef />
-            <ValueContainer />
-            <ProductPack />
-        </ProductScreenContainer>
+        <>
+            {data.length !== 0 ?
+                <ProductScreenContainer>
+                    <Header />
+                    <ProductSlider />
+                    <ProductInfo />
+                    <Line></Line>
+                    <ProductRef />
+                    <ValueContainer />
+                    <ProductPack />
+                </ProductScreenContainer>
+                : ""}
+        </>
     )
 }
