@@ -3,33 +3,33 @@ import { DataContext } from "./data-context";
 
 export const ShoppingCartContext = createContext();
 
-export const ShoppingCartProvider = ({children}) => {
-    const [ shoppingCart, setShoppingCart ] = useState({totalPrice: 0.00});
+export const ShoppingCartProvider = ({ children }) => {
+    const [shoppingCart, setShoppingCart] = useState({ totalPrice: 0.00 });
     const { data } = useContext(DataContext);
 
-    useEffect(() => {updateShoppingCart();}, [data]);
+    useEffect(() => {
+        const updateShoppingCart = () => {
+            const currentPriceList = data.map(({ sizes, price, quantity }) => {
+                let totalPack = 0;
+                Object.values(sizes).forEach(size => { totalPack += size });
 
-    const updateShoppingCart = () => {
-        const currentPriceList = data.map(item => {
-            let totalPack = 0;
-            Object.values(item.sizes).forEach(item => { totalPack += item });
-            const packPrice = totalPack * item.price;
-            let currentPrice = 0;
-            if (item.quantity > 0) {
-                currentPrice = packPrice * item.quantity
+                const packPrice = totalPack * price;
+                let currentPrice = 0;
+                if (quantity > 0) { currentPrice = packPrice * quantity };
                 return currentPrice;
-            }
-            return currentPrice;
-        });
-        let total = 0;
-        currentPriceList.forEach(item => total += item);
+            });
 
-        setShoppingCart({ totalPrice: total });
-    };
+            const totalPrice = currentPriceList.reduce((acc, item) => acc + item, 0);
+            setShoppingCart({ totalPrice });
+        };
+
+        updateShoppingCart();
+    }, [data]);
+
 
     return (
-        <ShoppingCartContext.Provider value={{shoppingCart}}>
+        <ShoppingCartContext.Provider value={{ shoppingCart }}>
             {children}
         </ShoppingCartContext.Provider>
-    )
-} 
+    );
+};
