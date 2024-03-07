@@ -3,22 +3,16 @@ import { images } from "../../objects/images"
 import { DataContext } from "../../context/data-context";
 import { SliderContainer, Slider, Product, Image, ReturnArrow, ForwardArrow } from "./style"
 
-export const ProductSlider = () => {    
+export const ProductSlider = () => {
     const { data, currentIndex, setCurrentIndex } = useContext(DataContext);
 
-    const nextSlider = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
-    };
+    const nextSlider = () => {setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);};
 
-    const prevSlider = () => {
-        setCurrentIndex((prevIndex) => (prevIndex - 1 + data.length) % data.length);
-    };
-
-    console.log(data[currentIndex]);
+    const prevSlider = () => {setCurrentIndex((prevIndex) => (prevIndex - 1 + data.length) % data.length);};
 
     return (
         <SliderContainer >
-            <Slider style={{ transform: `translateX(-${currentIndex * 100}%)`}}>
+            <Slider style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                 {data.map((product, index) => {
                     return (
                         <Product key={index}>
