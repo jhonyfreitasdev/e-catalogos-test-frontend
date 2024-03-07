@@ -10,7 +10,6 @@ import whiteForwardArrow from "../assets/images/white-button-forward.svg";
 import whiteReturnArrow from "../assets/images/white-button-return.svg";
 import closeButton from "../assets/images/close-button.svg";
 
-
 export const images = {
     forwardArrow,
     returnArrow,
