@@ -1,14 +1,21 @@
 import { useContext } from "react";
-import { images } from "../../objects/images"
+import { images } from "../../objects/images";
 import { DataContext } from "../../context/data-context";
-import { SliderContainer, Slider, Product, Image, ReturnArrow, ForwardArrow } from "./style"
+
+import { SliderContainer, Slider, Product, Image, ReturnArrow, ForwardArrow } from "./style";
 
 export const ProductSlider = ({ imageActive, setImageActive }) => {
     const { data, currentIndex, setCurrentIndex } = useContext(DataContext);
 
-    const nextSlider = () => { setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length); };
-
-    const prevSlider = () => { setCurrentIndex((prevIndex) => (prevIndex - 1 + data.length) % data.length); };
+    const nextSlider = () => { 
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length); 
+        delayChange();
+    };
+    const prevSlider = () => { 
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + data.length) % data.length); 
+        delayChange();
+    };
+    const delayChange = () => { setTimeout(() => { setImageActive(0); }, 180); };
 
     return (
         <SliderContainer >
@@ -22,23 +29,9 @@ export const ProductSlider = ({ imageActive, setImageActive }) => {
                 })}
             </Slider>
 
-            <ReturnArrow
-                src={images.returnArrow}
-                onClick={() => {
-                    prevSlider();
-                    setTimeout(() => {setImageActive(0);}, 180);
-                }}
-                alt="Botão de voltar"
-            />
+            <ReturnArrow src={images.returnArrow} onClick={prevSlider} alt="Botão de voltar"/>
             
-            <ForwardArrow
-                src={images.forwardArrow}
-                onClick={() => {
-                    nextSlider();
-                    setTimeout(() => {setImageActive(0);}, 180);
-                }}
-                alt="Botão de avançar"
-            />
+            <ForwardArrow src={images.forwardArrow} onClick={nextSlider} alt="Botão de avançar"/>
         </SliderContainer>
-    )
-}
+    );
+};
