@@ -1,11 +1,12 @@
 import { useContext } from "react";
-import { ProductInfoContainer, Container, TitleContainer, Title, ContentContainer, Colors, ColorContent, Info } from "./style";
 import { DataContext } from "../../context/data-context";
 import { images } from "../../objects/images";
 
+import { ProductInfoContainer, Container, TitleContainer, Title, ContentContainer, Colors, ColorContent, Info } from "./style";
+
 export const ProductInfo = ({handleInfoActiveChange}) => {
     const { data, currentIndex } = useContext(DataContext);
-    const currentProduct = data[currentIndex];
+    const { name, reference, brand_name, category_name, group_name, colors } = data[currentIndex];
 
     return (
         <ProductInfoContainer>
@@ -19,20 +20,20 @@ export const ProductInfo = ({handleInfoActiveChange}) => {
                     <Colors>Cores</Colors>
 
                     <ColorContent>
-                        {currentProduct.colors.map((color, index) => {
+                        {colors && colors.map((color, index) => {
                             return (
                                 <div key={index} style={{ backgroundColor: `#${color.cod_hex}` }}> {color.color_name} </div>
-                            )
+                            );
                         })}
                     </ColorContent>
 
-                    <Info>Nome do produto: <span>{currentProduct.name}</span></Info>
-                    <Info>Referência: <span>{currentProduct.reference}</span></Info>
-                    <Info>Marca: <span>{currentProduct.brand_name}</span></Info>
-                    <Info>Categoria: <span>{currentProduct.category_name}</span></Info>
-                    <Info>Gênero: <span>{currentProduct.group_name}</span></Info>
+                    <Info>Nome do produto: <span>{name}</span></Info>
+                    <Info>Referência: <span>{reference}</span></Info>
+                    <Info>Marca: <span>{brand_name}</span></Info>
+                    <Info>Categoria: <span>{category_name}</span></Info>
+                    <Info>Gênero: <span>{group_name}</span></Info>
                 </ContentContainer>
             </Container>
         </ProductInfoContainer>
-    )
-}
+    );
+};
