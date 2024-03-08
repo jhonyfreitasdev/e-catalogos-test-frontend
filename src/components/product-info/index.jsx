@@ -4,16 +4,16 @@ import { images } from "../../objects/images";
 
 import { ProductInfoContainer, Container, TitleContainer, Title, ContentContainer, Colors, ColorContent, Info } from "./style";
 
-export const ProductInfo = ({handleInfoActiveChange}) => {
+export const ProductInfo = ({handleInfoModalToggle}) => {
     const { data, currentIndex } = useContext(DataContext);
     const { name, reference, brand_name, category_name, group_name, colors } = data[currentIndex];
-
+    
     return (
         <ProductInfoContainer>
             <Container>
                 <TitleContainer>
                     <Title>Informações</Title>
-                    <img src={images.closeButton} alt="Imagem de X" onClick={handleInfoActiveChange} />
+                    <img src={images.closeButton} alt="Imagem de X" onClick={handleInfoModalToggle} />
                 </TitleContainer>
 
                 <ContentContainer>
