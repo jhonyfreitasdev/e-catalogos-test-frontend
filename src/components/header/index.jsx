@@ -7,15 +7,15 @@ import { HeaderContainer, ProductSectionContainer, ProductSection, FunctionSpan 
 export const Header = () => {
     const { data, currentIndex, setCurrentIndex } = useContext(DataContext);
     
-    const categoryList = data.map(({category_name}) => category_name);
-    const uniqueCategoriesList = [...new Set(categoryList)];
-    const actualCategory = categoryList[currentIndex];
+    const listOfAllCategories = data.map(({category_name}) => category_name);
+    const categoryList = [...new Set(listOfAllCategories)];
+    const actualCategory = listOfAllCategories[currentIndex];
     const productsInCategory = data.filter(({category_name}) => category_name === data[currentIndex].category_name).length;
-    let currentIndexCategory = uniqueCategoriesList.indexOf(actualCategory);
+    let currentIndexCategory = categoryList.indexOf(actualCategory);
 
     const changeCategory = (direction) => {
-        let nextIndexCategory = (currentIndexCategory + direction + uniqueCategoriesList.length) % uniqueCategoriesList.length;
-        const fistProductOfCategory = data.find(({category_name}) => category_name === uniqueCategoriesList[nextIndexCategory]);
+        let nextIndexCategory = (currentIndexCategory + direction + categoryList.length) % categoryList.length;
+        const fistProductOfCategory = data.find(({category_name}) => category_name === categoryList[nextIndexCategory]);
         const indexProduct = data.indexOf(fistProductOfCategory);
         setCurrentIndex(indexProduct);
     };

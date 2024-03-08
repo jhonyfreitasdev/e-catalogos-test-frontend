@@ -9,13 +9,13 @@ export const ProductSlider = ({ imageActive, setImageActive }) => {
 
     const nextSlider = () => { 
         setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length); 
-        delayChange();
+        changeDelay();
     };
     const prevSlider = () => { 
         setCurrentIndex((prevIndex) => (prevIndex - 1 + data.length) % data.length); 
-        delayChange();
+        changeDelay();
     };
-    const delayChange = () => { setTimeout(() => { setImageActive(0); }, 180); };
+    const changeDelay = () => { setTimeout(() => { setImageActive(0); }, 180); };
 
     return (
         <SliderContainer >
