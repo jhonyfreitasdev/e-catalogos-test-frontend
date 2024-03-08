@@ -8,45 +8,20 @@ export const ValueContainer = () => {
     const { shoppingCart } = useContext(ShoppingCartContext);
     const { data, setData, currentIndex } = useContext(DataContext);
 
-    let totalPack = 0;
-    Object.values(data[currentIndex].sizes).forEach(item => { totalPack += item });
-    const packPrice = totalPack * data[currentIndex].price;
-    let currentPrice = 0
-    if (data[currentIndex].quantity > 0) { currentPrice = packPrice * data[currentIndex].quantity }
+    const { sizes, price, quantity, id } = data[currentIndex];
+    const totalPack = Object.values(sizes).reduce((acc, item) => acc + item, 0);
+    const packPrice = totalPack * price;
+    const currentPrice = quantity > 0 ? packPrice * quantity : 0;
 
     const formatPrice = price => price.toFixed(2).replace('.', ',');
-    const addProduct = () => {
-        if (data[currentIndex].quantity) {
-            const newQuantity = data[currentIndex].quantity + 1
-            const newData = data.map(item => {
-                return item.id === data[currentIndex].id
-                    ? { ...data[currentIndex], quantity: newQuantity }
-                    : item
-            });
-            setData(newData);
-        } else {
-            const newData = data.map(item => {
-                return item.id === data[currentIndex].id
-                    ? { ...data[currentIndex], quantity: 1 }
-                    : item
-            });
-            setData(newData);
-        }
-    };
-    const removeProduct = () => {
-        if (data[currentIndex].quantity) {
-            if (data[currentIndex].quantity > 0) {
-                const newData = data.map(item => {
-                    const newQuantity = data[currentIndex].quantity - 1;
 
-                    return item.id === data[currentIndex].id
-                        ? { ...data[currentIndex], quantity: newQuantity }
-                        : item
-                });
-                setData(newData);
-            };
-        };
-    };
+    const updateQuantity = newQuantity => {
+        const newData = data.map(item => { return item.id === id ? { ...data[currentIndex], quantity: newQuantity } : item; });
+        setData(newData);
+    }
+
+    const addProduct = () => updateQuantity(quantity ? quantity + 1 : 1);
+    const removeProduct = () => { if (quantity && quantity > 0) { updateQuantity(quantity - 1); } };
 
     return (
         <Container>
@@ -58,7 +33,7 @@ export const ValueContainer = () => {
             <Count>
                 <img onClick={removeProduct} src={images.removeButton} alt="Botão de remover" />
 
-                <p> {data[currentIndex].quantity ?? 0} </p>
+                <p> {quantity ?? 0} </p>
 
                 <img onClick={addProduct} src={images.addButton} alt="Botão de adicionar" />
             </Count>
@@ -68,5 +43,5 @@ export const ValueContainer = () => {
                 <p>{`R$ ${formatPrice(shoppingCart.totalPrice)}`}</p>
             </Price>
         </Container>
-    )
-}
+    );
+};
