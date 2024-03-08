@@ -1,5 +1,5 @@
-# Teste Front Data Stone
-Teste técnico de Vue.js para empresa Data Stone
+# Teste Front eCatálogos
+
  
 ## 🔗 Acesso ao deploy do projeto
 <a href="https://e-catalogos-test-frontend.vercel.app/">Clique aqui para ir para a página</a>
