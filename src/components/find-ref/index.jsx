@@ -4,7 +4,7 @@ import { images } from "../../objects/images";
 
 import { FindRefContainer, Container, TitleContainer, Title, ContentContainer } from "./style";
 
-export const FindRef = ({ handleFindRefActiveChange }) => {
+export const FindRef = ({ handleFindRefModalToggle }) => {
     const [inputValue, setInputValue] = useState('');
     const [refNotFound, setRefNotFound] = useState(false);
     const { data, setCurrentIndex } = useContext(DataContext);
@@ -14,7 +14,7 @@ export const FindRef = ({ handleFindRefActiveChange }) => {
 
         if (foundRef) {
             setCurrentIndex(data.indexOf(foundRef));
-            handleFindRefActiveChange();
+            handleFindRefModalToggle();
             setRefNotFound(false);
         } else {
             setRefNotFound(true);
@@ -26,7 +26,7 @@ export const FindRef = ({ handleFindRefActiveChange }) => {
             <Container>
                 <TitleContainer>
                     <Title>BUSCAR POR REF</Title>
-                    <img src={images.closeButton} alt="Imagem de X" onClick={handleFindRefActiveChange} />
+                    <img src={images.closeButton} alt="Imagem de X" onClick={handleFindRefModalToggle} />
                 </TitleContainer>
 
                 <ContentContainer>
