@@ -5,4 +5,4 @@ export const PurchaseContainer = styled.div `
     height: 100vh;
     margin: 0 auto;
     border: 2px solid #000000;
-`
+`;

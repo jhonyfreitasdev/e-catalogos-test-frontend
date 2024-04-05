@@ -1,38 +1,40 @@
 import { useContext } from "react";
-import { images } from "../../objects/images.js";
+import { images } from "../../utils/images.js";
 import { DataContext } from "../../context/data-context.jsx";
 
 import { HeaderContainer, ProductSectionContainer, ProductSection, FunctionSpan } from "./style.jsx";
 
 export const Header = () => {
-    const { data, currentIndex, setCurrentIndex } = useContext(DataContext);
+  const { dataProducts, currentIndexProducts, setCurrentIndexProducts } = useContext(DataContext);
     
-    const listOfAllCategories = data.map(({category_name}) => category_name);
-    const categoryList = [...new Set(listOfAllCategories)];
-    const actualCategory = listOfAllCategories[currentIndex];
-    const productsInCategory = data.filter(({category_name}) => category_name === data[currentIndex].category_name).length;
-    let currentIndexCategory = categoryList.indexOf(actualCategory);
+  const listOfAllCategories = dataProducts.map(({category_name}) => category_name);
+  const categoryList = [...new Set(listOfAllCategories)];
+  const actualCategory = listOfAllCategories[currentIndexProducts];
+  const productsInCategory = dataProducts.filter(({category_name}) => category_name === dataProducts[currentIndexProducts].category_name).length;
+  let currentIndexCategory = categoryList.indexOf(actualCategory);
 
-    const changeCategory = (direction) => {
-        let nextIndexCategory = (currentIndexCategory + direction + categoryList.length) % categoryList.length;
-        const fistProductOfCategory = data.find(({category_name}) => category_name === categoryList[nextIndexCategory]);
-        const indexProduct = data.indexOf(fistProductOfCategory);
-        setCurrentIndex(indexProduct);
-    };
+  const changeCategory = (direction) => {
+    let nextIndexCategory = (currentIndexCategory + direction + categoryList.length) % categoryList.length;
+    const fistProductOfCategory = dataProducts.find(({category_name}) => category_name === categoryList[nextIndexCategory]);
+    const indexProduct = dataProducts.indexOf(fistProductOfCategory);
+    setCurrentIndexProducts(indexProduct);
+  };
     
-    return (
-        <HeaderContainer>
-            <img src={images.returnArrow} alt="Btn de retornar" />
+  return (
+    <HeaderContainer>
+      <img src={images.returnArrow} alt="Btn de retornar" />
 
-            <ProductSectionContainer>
-                <img src={images.whiteReturnArrow} onClick={() => changeCategory(-1)} alt="Imagem de seta" />
-                <div>
-                    <ProductSection>{`(${productsInCategory}) ${actualCategory}`}</ProductSection>
-                </div>
-                <img src={images.whiteForwardArrow} onClick={() => changeCategory(1)} alt="Imagem de seta" />
-            </ProductSectionContainer>
+      <ProductSectionContainer>
+        <img src={images.whiteReturnArrow} onClick={() => changeCategory(-1)} alt="Imagem de seta" />
 
-            <FunctionSpan>F</FunctionSpan>
-        </HeaderContainer>
-    );
+        <div>
+          <ProductSection>{`(${productsInCategory}) ${actualCategory}`}</ProductSection>
+        </div>
+        
+        <img src={images.whiteForwardArrow} onClick={() => changeCategory(1)} alt="Imagem de seta" />
+      </ProductSectionContainer>
+
+      <FunctionSpan>F</FunctionSpan>
+    </HeaderContainer>
+  );
 };

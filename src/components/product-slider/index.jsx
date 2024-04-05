@@ -1,37 +1,38 @@
 import { useContext } from "react";
-import { images } from "../../objects/images";
+import { images } from "../../utils/images";
 import { DataContext } from "../../context/data-context";
 
 import { SliderContainer, Slider, Product, Image, ReturnArrow, ForwardArrow } from "./style";
 
 export const ProductSlider = ({ imageActive, setImageActive }) => {
-    const { data, currentIndex, setCurrentIndex } = useContext(DataContext);
+  const { dataProducts, currentIndexProducts, setCurrentIndexProducts } = useContext(DataContext);
 
-    const nextSlider = () => { 
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length); 
-        changeDelay();
-    };
-    const prevSlider = () => { 
-        setCurrentIndex((prevIndex) => (prevIndex - 1 + data.length) % data.length); 
-        changeDelay();
-    };
-    const changeDelay = () => { setTimeout(() => { setImageActive(0); }, 180); };
+  const handleChangeSlider = (direction) => {
+    if (direction === 'next'){
+      setCurrentIndexProducts((prevIndex) => (prevIndex + 1) % dataProducts.length); 
+      changeDelay();
+    } else {
+      setCurrentIndexProducts((prevIndex) => (prevIndex - 1 + dataProducts.length) % dataProducts.length); 
+      changeDelay();
+    }
+  };
 
-    return (
-        <SliderContainer >
-            <Slider style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-                {data.map((product, index) => {
-                    return (
-                        <Product key={index}>
-                            <Image src={product.images[imageActive].image} alt="Imagem do produto" />
-                        </Product>
-                    )
-                })}
-            </Slider>
+  const changeDelay = () => { setTimeout(() => { setImageActive(0); }, 180); };
 
-            <ReturnArrow src={images.returnArrow} onClick={prevSlider} alt="Botão de voltar"/>
-            
-            <ForwardArrow src={images.forwardArrow} onClick={nextSlider} alt="Botão de avançar"/>
-        </SliderContainer>
-    );
+  return (
+    <SliderContainer >
+      <Slider style={{ transform: `translateX(-${currentIndexProducts * 100}%)` }}>
+        {dataProducts.map((product, index) => {
+          return (
+            <Product key={index}>
+              <Image src={product.images[imageActive].image} alt="Imagem do produto" />
+            </Product>
+          );
+        })}
+      </Slider>
+
+      <ReturnArrow src={images.returnArrow} onClick={() => handleChangeSlider('prev')} alt="Botão de voltar"/>
+      <ForwardArrow src={images.forwardArrow} onClick={() => handleChangeSlider('next')} alt="Botão de avançar"/>
+    </SliderContainer>
+  );
 };

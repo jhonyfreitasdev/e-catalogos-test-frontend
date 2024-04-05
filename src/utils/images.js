@@ -11,15 +11,15 @@ import whiteReturnArrow from "../assets/images/white-button-return.svg";
 import closeButton from "../assets/images/close-button.svg";
 
 export const images = {
-    forwardArrow,
-    returnArrow,
-    addButton,
-    removeButton,
-    cart,
-    equal,
-    info,
-    query,
-    whiteForwardArrow,
-    whiteReturnArrow,
-    closeButton
+  forwardArrow,
+  returnArrow,
+  addButton,
+  removeButton,
+  cart,
+  equal,
+  info,
+  query,
+  whiteForwardArrow,
+  whiteReturnArrow,
+  closeButton
 };

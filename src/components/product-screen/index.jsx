@@ -12,44 +12,44 @@ import { FindRef } from "../find-ref";
 import { ProductScreenContainer, Line } from './style';
 
 export const ProductScreen = () => {
-    const [infoActive, setInfoActive] = useState(false);
-    const [findRef, setFindRef] = useState(false);
-    const [imageActive, setImageActive] = useState(0);
-    const { data, setData } = useContext(DataContext);
+  const [infoModal, setInfoModal] = useState(false);
+  const [findRefModal, setFindRefModal] = useState(false);
+  const [imageActive, setImageActive] = useState(0);
+  const { dataProducts, setDataProducts } = useContext(DataContext);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch('/mock-data.json');
-            const productData = await response.json();
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('/mock-data.json');
+      const productData = await response.json();
 
-            setData(productData);
-        };
+      setDataProducts(productData);
+    };
 
-        fetchData();
-    }, []);
+    fetchData();
+  }, []);
 
-    const handleInfoModalToggle = () => setInfoActive(!infoActive);
-    const handleFindRefModalToggle = () => setFindRef(!findRef);
+  const handleInfoModal = () => setInfoModal(!infoModal);
+  const handleFindRefModal = () => setFindRefModal(!findRefModal);
 
-    return (
-        <>
-            {data.length !== 0 && (
-                <ProductScreenContainer>
-                    <Header />
-                    <ProductSlider imageActive={imageActive} setImageActive={setImageActive} />
-                    <SectionInfo
-                        handleInfoModalToggle={handleInfoModalToggle}
-                        handleFindRefModalToggle={handleFindRefModalToggle}
-                        setImageActive={setImageActive}
-                    />
-                    <Line></Line>
-                    <ProductRef />
-                    <ValueContainer />
-                    <ProductPack />
-                    {infoActive && <ProductInfo handleInfoModalToggle={handleInfoModalToggle} />}
-                    {findRef && <FindRef handleFindRefModalToggle={handleFindRefModalToggle} />}
-                </ProductScreenContainer>
-            )}
-        </>
-    );
+  return (
+    <>
+      {dataProducts.length !== 0 && (
+        <ProductScreenContainer>
+          <Header />
+          <ProductSlider imageActive={imageActive} setImageActive={setImageActive} />
+          <SectionInfo
+            handleInfoModal={handleInfoModal}
+            handleFindRefModal={handleFindRefModal}
+            setImageActive={setImageActive}
+          />
+          <Line/>
+          <ProductRef />
+          <ValueContainer />
+          <ProductPack />
+          {infoModal && <ProductInfo handleInfoModal={handleInfoModal} />}
+          {findRefModal && <FindRef handleFindRefModal={handleFindRefModal} />}
+        </ProductScreenContainer>
+      )}
+    </>
+  );
 };
