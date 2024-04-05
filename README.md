@@ -12,7 +12,7 @@
 - Possui um filtro para trocar de categoria;
 - Possui um slide para trocar de produto;
 - Cada produto tem um slide de imagens secundárias;
-- Os produtos tem um modal de informações e um de busca de produtos por referênça;
+- Os produtos tem um modal de informações e um de busca de produtos por referência;
 - Possui botões para adicionar e remover produtos;
 - Os preços por produto e total do carrinho são atualizados dinâmicamente.
 <br/>
@@ -40,7 +40,7 @@
 
 ### Inicializando o projeto 
 - Para iniciar a aplicação digite `npm run dev`
-- Após rodar o código acima, basta acessa `http://localhost:3000` onde a aplicação estará em execução.  
+- Após rodar o código acima, basta acessar `http://localhost:3000` onde a aplicação estará em execução.  
 <br/>
 
 
